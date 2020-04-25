@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig', # new
     'articles.apps.ArticlesConfig', # new
     'crispy_forms',
-    'whitenoise.runserver_nostatic', # new!
+    
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser' # new
