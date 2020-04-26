@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig', # new
     'articles.apps.ArticlesConfig', # new
     'crispy_forms',
+    'whitenoise.runserver_nostatic', #new
     
 ]
 
@@ -48,6 +49,7 @@ AUTH_USER_MODEL = 'users.CustomUser' # new
 TIME_ZONE = 'America/Sao_Paulo'
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -126,6 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #new
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
